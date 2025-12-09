@@ -1,4 +1,3 @@
-
 let estudiantes = [
     {
 
@@ -6,7 +5,6 @@ let estudiantes = [
         Nombre: 'Sofia',
         Apellido: 'Flores',
         Nota: 7
-
 
     },
     {
@@ -23,14 +21,28 @@ let estudiantes = [
     }
 
 ]
-//guardar lo que escribe el usuario
+
+//Guardar inputs y boton
 let alumno = document.querySelector('#alumno')
 let botonBuscar = document.querySelector('#botonBuscar')
-let Apellido
+let parrafo = document.querySelector('p')
+let apellido
+let posicion
 botonBuscar.onclick = function () {
-
-//buscar el estudiante por appelido
-Apellido = alumno.value
-//mostrar todos sus datos
-
+    //Esto se ejecuta en el boton
+    posicion = -1
+    //Guardar lo que escribe el usuario
+    apellido = alumno.value
+    //Buscar el estudiante por apellido
+    for (let index = 0; index < estudiantes.length; index++) {
+        if (estudiantes[index].Apellido == apellido) {
+            posicion = index
+        }
+    }
+    if (posicion > -1) {
+        parrafo.textContent = `${estudiantes[posicion].Apellido}, ${estudiantes[posicion].Nombre} ${estudiantes[posicion].Nota}`
+    } else {
+        parrafo.textContent = 'No se encuentra el usuario'
+    }
+    
 }
